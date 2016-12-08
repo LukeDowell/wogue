@@ -5,8 +5,14 @@
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="wogue-client_main" target="1.8" />
+      <module name="wogue-client_test" target="1.8" />
       <module name="wogue-parent_main" target="1.8" />
       <module name="wogue-parent_test" target="1.8" />
+      <module name="wogue-server_main" target="1.8" />
+      <module name="wogue-server_test" target="1.8" />
+      <module name="wogue-shared_main" target="1.8" />
+      <module name="wogue-shared_test" target="1.8" />
       <module name="wogue_main" target="1.8" />
       <module name="wogue_test" target="1.8" />
     </bytecodeTargetLevel>

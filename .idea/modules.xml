@@ -3,11 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-client/wogue-client.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-client/wogue-client.iml" group="wogue-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-client/wogue-client_main.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-client/wogue-client_main.iml" group="wogue-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-client/wogue-client_test.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-client/wogue-client_test.iml" group="wogue-client" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-parent.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-parent.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-parent_main.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-parent_main.iml" group="wogue-parent" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-parent_test.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-parent_test.iml" group="wogue-parent" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-server/wogue-server.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-server/wogue-server.iml" group="wogue-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-server/wogue-server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-server/wogue-server_main.iml" group="wogue-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-server/wogue-server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-server/wogue-server_test.iml" group="wogue-server" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-shared/wogue-shared.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-shared/wogue-shared.iml" group="wogue-shared" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-shared/wogue-shared_main.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-shared/wogue-shared_main.iml" group="wogue-shared" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wogue-shared/wogue-shared_test.iml" filepath="$PROJECT_DIR$/.idea/modules/wogue-shared/wogue-shared_test.iml" group="wogue-shared" />
     </modules>
   </component>
 </project>
