@@ -12,12 +12,12 @@ class Network {
         /**
          * The TCP port to connect / listen to
          */
-        const val TCP_PORT = 696969
+        const val TCP_PORT = 6969
 
         /**
          * The UDP port to connect / listen to
          */
-        const val UDP_PORT = 797979
+        const val UDP_PORT = 7979
 
         /**
          * The address the server is hosted on
