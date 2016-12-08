@@ -1,0 +1,6 @@
+include 'wogue-client'
+include 'wogue-server'
+include 'wogue-shared'
+
+rootProject.name = 'wogue-parent'
+
