@@ -1,6 +1,5 @@
 package org.badgrades.wogue.net
 
-import com.esotericsoftware.kryo.Kryo
 import org.badgrades.wogue.model.Character
 
 /**
@@ -23,15 +22,5 @@ class Network {
          * The address the server is hosted on
          */
         const val ADDRESS = "127.0.0.1"
-
-
-        /**
-         * https://github.com/EsotericSoftware/kryonet#registering-classes
-         */
-        fun register(kryo: Kryo) {
-
-            kryo.register(Character::class.java)
-
-        }
     }
 }

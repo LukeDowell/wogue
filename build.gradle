@@ -24,7 +24,7 @@ subprojects {
     
     dependencies {
         compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: kotlin_version
-        compile group: 'org.slf4j', name: 'slf4j-simple', version: slf4j_version
+        compile group: 'org.slf4j', name: 'slf4j-log4j12', version: slf4j_version
 
         testCompile group: 'junit', name: 'junit', version: junit_version
     }
