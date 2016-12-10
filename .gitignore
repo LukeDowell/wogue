@@ -47,4 +47,4 @@ fabric.properties
 ## More Gradle and Build
 **/build
 **/.gradle
-
+/.idea
