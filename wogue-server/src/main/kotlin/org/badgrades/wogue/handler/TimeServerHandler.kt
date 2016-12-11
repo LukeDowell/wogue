@@ -17,12 +17,10 @@ class TimeServerHandler : ChannelInboundHandlerAdapter() {
         val time = ctx?.alloc()?.buffer(4)
         time?.writeInt((System.currentTimeMillis() / 1000L + 2208988800L).toInt())
 
+        log.info("Responding with time {} ", time)
         val future = ctx?.writeAndFlush(time)
         future?.addListener {
-            ChannelFutureListener { channelFuture ->
-                assert(future == channelFuture)
-                ctx.close()
-            }
+            ChannelFutureListener.CLOSE // Close on complete
         }
     }
 }

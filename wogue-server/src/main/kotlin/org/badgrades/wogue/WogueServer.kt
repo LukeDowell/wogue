@@ -7,6 +7,7 @@ import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioServerSocketChannel
 import org.badgrades.wogue.handler.DiscardServerHandler
+import org.badgrades.wogue.handler.TimeServerHandler
 import org.badgrades.wogue.net.Network
 import org.badgrades.wogue.net.Network.Companion.TCP_PORT
 import org.badgrades.wogue.util.LoggerDelegate
@@ -32,7 +33,8 @@ class WogueServer {
                     .channel(NioServerSocketChannel::class.java)
                     .childHandler(object : ChannelInitializer<SocketChannel>() { // TODO extract this out
                         override fun initChannel(ch: SocketChannel?) {
-                            ch?.pipeline()?.addLast(DiscardServerHandler())
+                            ch?.pipeline()?.addLast(TimeServerHandler())
+//                            ch?.pipeline()?.addLast(DiscardServerHandler())
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)

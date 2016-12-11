@@ -1,11 +1,20 @@
 package org.badgrades.wogue
 
+import io.netty.bootstrap.Bootstrap
+import io.netty.channel.ChannelInitializer
+import io.netty.channel.ChannelOption
+import io.netty.channel.nio.NioEventLoopGroup
+import io.netty.channel.socket.SocketChannel
+import io.netty.channel.socket.nio.NioSocketChannel
+import org.badgrades.wogue.handler.TimeClientHandler
 import org.badgrades.wogue.net.Network
 import org.badgrades.wogue.util.LoggerDelegate
 
 class WogueClient {
 
     val log by LoggerDelegate()
+    
+    val workerGroup = NioEventLoopGroup()
 
     companion object {
         /**
@@ -17,7 +26,24 @@ class WogueClient {
     init {
         log.info("WogueClient starting up...")
 
-        log.info("WogueClient started successfully!")
+        try {
+            
+            val bootstrap = Bootstrap()
+            bootstrap.group(workerGroup)
+            bootstrap.channel(NioSocketChannel::class.java)
+            bootstrap.option(ChannelOption.SO_KEEPALIVE, true)
+            bootstrap.handler(object : ChannelInitializer<SocketChannel>() {
+                override fun initChannel(ch: SocketChannel?) {
+                    ch?.pipeline()?.addLast(TimeClientHandler())
+                }
+            })
+            
+        } finally {
+            
+            
+            
+        }
         
+        log.info("WogueClient started successfully!")
     }
 }

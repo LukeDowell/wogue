@@ -14,9 +14,9 @@ class DiscardServerHandler : ChannelInboundHandlerAdapter() {
     val log by LoggerDelegate()
 
     override fun channelRead(ctx: ChannelHandlerContext?, msg: Any?) {
-        val message = msg as? ByteBuf
-        message?.release()
+        val message = msg as ByteBuf
+        message.release()
 
-        log.info("Received and discarded byte buffer of size {}", message?.array()?.size)
+        log.info("Received and discarded byte buffer of size {}", message.array().size)
     }
 }
