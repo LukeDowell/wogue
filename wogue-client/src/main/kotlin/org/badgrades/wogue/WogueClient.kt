@@ -37,11 +37,29 @@ class WogueClient {
                     ch?.pipeline()?.addLast(TimeClientHandler())
                 }
             })
-            
+
+            // Start the client
+            val future = bootstrap.connect(
+                    Network.ADDRESS,
+                    Network.TCP_PORT
+            ).sync()
+
+            log.info(
+                    "Client started, address: {} , port: {}",
+                    Network.ADDRESS,
+                    Network.TCP_PORT
+            )
+
+            // Wait until the connection is closed
+            future.channel()
+                    .closeFuture()
+                    .sync()
+
         } finally {
-            
-            
-            
+
+            workerGroup.shutdownGracefully()
+            log.info("WorkerGroup shut down")
+
         }
         
         log.info("WogueClient started successfully!")
