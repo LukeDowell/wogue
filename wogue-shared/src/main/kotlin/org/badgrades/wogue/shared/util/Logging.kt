@@ -1,4 +1,4 @@
-package org.badgrades.wogue.util
+package org.badgrades.wogue.shared.util
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

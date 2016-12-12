@@ -1,8 +1,8 @@
-package org.badgrades.wogue.handler
+package org.badgrades.client.netty.handler
 
+import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
-import io.netty.buffer.ByteBuf
 import java.util.*
 
 

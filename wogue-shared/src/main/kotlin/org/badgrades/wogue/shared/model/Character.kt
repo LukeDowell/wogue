@@ -1,4 +1,4 @@
-package org.badgrades.wogue.model
+package org.badgrades.wogue.shared.model
 
 import java.awt.Point
 

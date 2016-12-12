@@ -1,10 +1,9 @@
-package org.badgrades.wogue.handler
+package org.badgrades.wogue.server.netty.handler
 
-import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelFutureListener
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
-import org.badgrades.wogue.util.LoggerDelegate
+import org.badgrades.wogue.shared.util.LoggerDelegate
 
 /**
  * Created by luke on 12/10/2016.

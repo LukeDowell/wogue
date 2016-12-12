@@ -1,4 +1,4 @@
-package org.badgrades.wogue.gui
+package org.badgrades.client.gui
 
 import javafx.application.Application
 import javafx.stage.Stage

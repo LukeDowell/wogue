@@ -1,6 +1,6 @@
-package org.badgrades.wogue.net
+package org.badgrades.wogue.shared.net
 
-import org.badgrades.wogue.model.Character
+import org.badgrades.wogue.shared.model.Character
 
 /**
  * A collection of network related utilities and variables
