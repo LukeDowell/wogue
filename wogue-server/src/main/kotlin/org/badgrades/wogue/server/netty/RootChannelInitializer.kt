@@ -2,6 +2,7 @@ package org.badgrades.wogue.server.netty
 
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
+import io.netty.handler.codec.json.JsonObjectDecoder
 import org.badgrades.wogue.server.netty.handler.CharacterUpdateHandler
 import org.badgrades.wogue.shared.util.LoggerDelegate
 
@@ -18,7 +19,7 @@ class RootChannelInitializer : ChannelInitializer<SocketChannel>() {
                 ch?.remoteAddress())
         
         ch?.pipeline()?.addLast(
-//                JsonObjectDecoder(),
+                JsonObjectDecoder(),
                 CharacterUpdateHandler()
         )
         
