@@ -1,4 +1,4 @@
-package org.badgrades.client.netty.handler
+package org.badgrades.client.network.netty
 
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext

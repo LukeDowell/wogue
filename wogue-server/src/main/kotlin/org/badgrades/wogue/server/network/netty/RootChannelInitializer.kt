@@ -1,4 +1,4 @@
-package org.badgrades.wogue.server.netty
+package org.badgrades.wogue.server.network.netty
 
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel

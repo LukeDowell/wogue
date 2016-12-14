@@ -1,12 +1,11 @@
-package org.badgrades.wogue.server
+package org.badgrades.wogue.server.network
 
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.ChannelOption
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioServerSocketChannel
-import org.badgrades.wogue.server.netty.RootChannelInitializer
+import org.badgrades.wogue.server.network.netty.RootChannelInitializer
 import org.badgrades.wogue.shared.util.LoggerDelegate
-import org.badgrades.wogue.shared.util.Network
 import org.badgrades.wogue.shared.util.Network.Companion.TCP_PORT
 
 class WogueServer {
@@ -29,7 +28,7 @@ class WogueServer {
                     .childOption(ChannelOption.SO_KEEPALIVE, true)
 
             // Bind and start to accept incoming connections
-            val channelFuture = bootStrap.bind(Network.TCP_PORT).sync()
+            val channelFuture = bootStrap.bind(TCP_PORT).sync()
 
             // Wait until the server socket is closed
             channelFuture.channel().closeFuture().sync()

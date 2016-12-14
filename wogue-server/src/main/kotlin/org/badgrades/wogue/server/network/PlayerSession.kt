@@ -1,4 +1,4 @@
-package org.badgrades.wogue.server.netty
+package org.badgrades.wogue.server.network
 
 import io.netty.channel.socket.SocketChannel
 import org.badgrades.wogue.shared.model.Player

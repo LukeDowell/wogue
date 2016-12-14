@@ -1,4 +1,4 @@
-package org.badgrades.wogue.server.netty
+package org.badgrades.wogue.server.network
 
 import java.util.*
 

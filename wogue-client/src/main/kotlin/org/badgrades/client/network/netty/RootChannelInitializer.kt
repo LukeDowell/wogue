@@ -1,13 +1,13 @@
-package org.badgrades.client.netty
+package org.badgrades.client.network.netty
 
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.json.JsonObjectDecoder
-import org.badgrades.client.netty.handler.ClientMessageHandler
-import org.badgrades.wogue.shared.netty.ItemObjectEncoder
-import org.badgrades.wogue.shared.netty.PlayerObjectEncoder
+import org.badgrades.client.network.netty.ClientMessageHandler
+import org.badgrades.wogue.shared.network.ItemObjectEncoder
+import org.badgrades.wogue.shared.network.PlayerObjectEncoder
 import org.badgrades.wogue.shared.util.LoggerDelegate
 import java.nio.charset.Charset
 
