@@ -31,15 +31,3 @@ subprojects {
         testCompile group: 'junit', name: 'junit', version: junit_version
     }
 }
-
-project(':wogue-client') {
-    dependencies {
-        compile project(':wogue-shared')
-    }
-}
-
-project(':wogue-server') {
-    dependencies {
-        compile project(':wogue-shared')
-    }
-}
