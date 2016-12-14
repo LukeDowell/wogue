@@ -20,6 +20,7 @@ class RootChannelInitializer : ChannelInitializer<SocketChannel>() {
                 
                 // Inbound Adapters
                 
+                
                 // Outbound Adapters. The last adapter will be the first adapter hit on outgoing calls
         )
         
