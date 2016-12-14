@@ -1,4 +1,4 @@
-package org.badgrades.wogue.shared.net
+package org.badgrades.wogue.shared.util
 
 import org.badgrades.wogue.shared.model.Player
 

@@ -5,8 +5,8 @@ import io.netty.channel.ChannelOption
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioSocketChannel
 import org.badgrades.client.netty.RootChannelInitializer
-import org.badgrades.wogue.shared.net.Network
 import org.badgrades.wogue.shared.util.LoggerDelegate
+import org.badgrades.wogue.shared.util.Network
 
 class WogueClient {
 

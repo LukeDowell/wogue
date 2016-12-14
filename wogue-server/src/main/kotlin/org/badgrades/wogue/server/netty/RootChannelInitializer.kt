@@ -2,8 +2,6 @@ package org.badgrades.wogue.server.netty
 
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
-import io.netty.handler.codec.json.JsonObjectDecoder
-import org.badgrades.wogue.server.netty.handler.CharacterUpdateHandler
 import org.badgrades.wogue.shared.util.LoggerDelegate
 
 /**
@@ -19,8 +17,10 @@ class RootChannelInitializer : ChannelInitializer<SocketChannel>() {
                 ch?.remoteAddress())
         
         ch?.pipeline()?.addLast(
-                JsonObjectDecoder(),
-                CharacterUpdateHandler()
+                
+                // Inbound Adapters
+                
+                // Outbound Adapters. The last adapter will be the first adapter hit on outgoing calls
         )
         
         log.info("Channel with id: {} and address: {} initialized!",

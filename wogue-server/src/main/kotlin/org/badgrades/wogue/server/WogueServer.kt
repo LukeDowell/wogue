@@ -5,9 +5,9 @@ import io.netty.channel.ChannelOption
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioServerSocketChannel
 import org.badgrades.wogue.server.netty.RootChannelInitializer
-import org.badgrades.wogue.shared.net.Network
-import org.badgrades.wogue.shared.net.Network.Companion.TCP_PORT
 import org.badgrades.wogue.shared.util.LoggerDelegate
+import org.badgrades.wogue.shared.util.Network
+import org.badgrades.wogue.shared.util.Network.Companion.TCP_PORT
 
 class WogueServer {
 

@@ -1,4 +1,0 @@
-dependencies {
-    compile group: 'io.netty', name: 'netty-all', version: netty_version
-    compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: jackson_version
-}

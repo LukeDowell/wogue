@@ -24,6 +24,8 @@ class ClientMessageHandler : ChannelInboundHandlerAdapter() {
             log.info("Entity received from context: {} , uuid: {}",
                     ctx?.name(),
                     msg.id.toString())
+        } else {
+            log.info("Unhandled message sent {}", msg)
         }
     }
     

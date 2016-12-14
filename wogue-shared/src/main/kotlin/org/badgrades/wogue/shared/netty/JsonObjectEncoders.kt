@@ -1,4 +1,4 @@
-package org.badgrades.client.netty.encoder
+package org.badgrades.wogue.shared.netty
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.netty.buffer.ByteBuf
