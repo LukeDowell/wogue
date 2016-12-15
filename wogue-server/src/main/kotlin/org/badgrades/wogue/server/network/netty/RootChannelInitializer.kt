@@ -2,6 +2,11 @@ package org.badgrades.wogue.server.network.netty
 
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
+import io.netty.handler.codec.serialization.ClassResolvers
+import io.netty.handler.codec.serialization.ObjectDecoder
+import io.netty.handler.codec.serialization.ObjectEncoder
+import org.badgrades.wogue.shared.network.Event
+import org.badgrades.wogue.shared.network.Message
 import org.badgrades.wogue.shared.util.LoggerDelegate
 
 /**
@@ -17,15 +22,23 @@ class RootChannelInitializer : ChannelInitializer<SocketChannel>() {
                 ch?.remoteAddress())
         
         ch?.pipeline()?.addLast(
+        
+                // Outbound
+                ObjectEncoder(),
                 
-                // Inbound Adapters
-                
-                
-                // Outbound Adapters. The last adapter will be the first adapter hit on outgoing calls
+                // Inbound
+                ObjectDecoder(ClassResolvers.cacheDisabled(null)),
+                EventDispatcherAdapter()
         )
         
         log.info("Channel with id: {} and address: {} initialized!",
                 ch?.id(),
                 ch?.remoteAddress())
+    
+        val message = Message(
+                Event.CHAT,
+                "Hey dog"
+        )
+        ch?.writeAndFlush(message)
     }
 }

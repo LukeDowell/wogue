@@ -1,5 +1,6 @@
 package org.badgrades.wogue.server.network.domain
 
+import org.badgrades.wogue.shared.network.Event
 import java.util.*
 
 /**
@@ -23,6 +24,11 @@ interface Room {
      * A collection of all player sessions associated with this room
      */
     val sessions: MutableCollection<PlayerSession>
+    
+    /**
+     * A list of all the events that this room cares about
+     */
+    val events: Collection<Event>
     
     /**
      * Convenient function for joining a room

@@ -1,3 +1,4 @@
 dependencies {
     compile project(':wogue-shared')
+    compile group: 'com.google.inject', name: 'guice', version: guice_version
 }

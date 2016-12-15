@@ -1,11 +1,11 @@
 package org.badgrades.wogue.shared.network
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import java.io.Serializable
 
 /**
  * All exchanges between the server and client are instances of this class
  */
 class Message(
-        @JsonProperty val event: Event,
-        @JsonProperty val payload: Any
-)
+        val event: Event,
+        val payload: Any
+) : Serializable

@@ -1,9 +1,11 @@
 package org.badgrades.wogue.shared.network
 
+import java.io.Serializable
+
 /**
  * Flag for describing what kind of payload a message contains
  */
-enum class Event(val sign: Byte) {
+enum class Event(val sign: Byte) : Serializable {
     
     CHAT(0x00),
     

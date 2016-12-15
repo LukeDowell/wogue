@@ -1,9 +1,9 @@
 package org.badgrades.client.network.netty
 
-import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
-import org.badgrades.wogue.shared.model.Entity
+import org.badgrades.wogue.shared.network.Event
+import org.badgrades.wogue.shared.network.Message
 import org.badgrades.wogue.shared.util.LoggerDelegate
 
 class ClientMessageHandler : ChannelInboundHandlerAdapter() {
@@ -11,22 +11,14 @@ class ClientMessageHandler : ChannelInboundHandlerAdapter() {
     val log by LoggerDelegate()
     
     override fun channelRead(ctx: ChannelHandlerContext?, msg: Any?) {
-        if (msg is ByteBuf) {
-            log.info("ByteBuf received from context: {} ,  {}",
-                    ctx?.name(),
-                    msg.toString())
-            
-            val msgBytes = ByteArray(msg.readableBytes(), { _ -> msg.readByte() })
-            log.info("Message received! {}" , String(msgBytes))
-        }
+        val message = msg as Message
+        log.info("Channel READ! {}", message.payload)
         
-        if (msg is Entity) {
-            log.info("Entity received from context: {} , uuid: {}",
-                    ctx?.name(),
-                    msg.id.toString())
-        } else {
-            log.info("Unhandled message sent {}", msg)
-        }
+        val response = Message(
+                Event.CHAT,
+                "Waddup fam"
+        )
+        ctx?.writeAndFlush(response)
     }
     
     @Suppress("OverridingDeprecatedMember")
