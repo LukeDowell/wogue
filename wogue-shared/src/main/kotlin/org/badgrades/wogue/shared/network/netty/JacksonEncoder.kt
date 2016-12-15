@@ -10,12 +10,11 @@ import org.badgrades.wogue.shared.util.LoggerDelegate
 class JacksonEncoder : MessageToByteEncoder<Message>() {
     
     val log by LoggerDelegate()
-    val objectMapper = jacksonObjectMapper()
     
     override fun encode(ctx: ChannelHandlerContext?, msg: Message?, out: ByteBuf?) {
         log.info("Encode hit")
         
-        val byteArray = objectMapper.writeValueAsBytes(msg)
+        val byteArray = jacksonObjectMapper().writeValueAsBytes(msg)
         
         log.info("Message encoded {}", byteArray)
         out?.writeBytes(byteArray)

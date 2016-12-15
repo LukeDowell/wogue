@@ -4,7 +4,7 @@ import org.badgrades.wogue.shared.network.Event
 import org.badgrades.wogue.shared.network.Message
 
 /**
- * Interface for objects that want to be notified of certain events
+ * Abstract class for objects that want to be notified of certain events
  */
 interface EventObserver {
     
@@ -18,4 +18,5 @@ interface EventObserver {
      * eventsToListenFor
      */
     fun update(message: Message)
+    
 }

@@ -1,7 +1,7 @@
 package org.badgrades.wogue.server
 
-import org.badgrades.wogue.server.network.WogueServer
+import com.google.inject.Guice
 
 fun main(args: Array<String>) {
-    WogueServer()
+    Guice.createInjector(ServiceModule())
 }

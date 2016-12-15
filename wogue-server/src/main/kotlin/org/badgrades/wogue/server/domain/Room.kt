@@ -1,6 +1,5 @@
-package org.badgrades.wogue.server.network.domain
+package org.badgrades.wogue.server.domain
 
-import org.badgrades.wogue.shared.network.Event
 import java.util.*
 
 /**
@@ -16,7 +15,7 @@ interface Room {
     val id: UUID
     
     /**
-     * A name for this room. Probably should also be unique, how to enforce?
+     * A name for this room. Uniqueness is not enforced.
      */
     val name: String
     
@@ -24,11 +23,6 @@ interface Room {
      * A collection of all player sessions associated with this room
      */
     val sessions: MutableCollection<PlayerSession>
-    
-    /**
-     * A list of all the events that this room cares about
-     */
-    val events: Collection<Event>
     
     /**
      * Convenient function for joining a room

@@ -1,11 +1,14 @@
 package org.badgrades.wogue.server.network.netty
 
+import com.google.inject.Inject
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
+import org.badgrades.wogue.shared.event.EventNotifier
 import org.badgrades.wogue.shared.network.Message
 import org.badgrades.wogue.shared.util.LoggerDelegate
 
-class EventDispatcherAdapter : ChannelInboundHandlerAdapter() {
+class EventDispatcherAdapter
+@Inject constructor(eventNotifier: EventNotifier) : ChannelInboundHandlerAdapter() {
     
     val log by LoggerDelegate()
     

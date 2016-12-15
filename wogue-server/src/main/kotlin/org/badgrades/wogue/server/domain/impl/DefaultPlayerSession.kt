@@ -1,7 +1,7 @@
-package org.badgrades.wogue.server.network.domain.impl
+package org.badgrades.wogue.server.domain.impl
 
 import io.netty.channel.socket.SocketChannel
-import org.badgrades.wogue.server.network.domain.PlayerSession
+import org.badgrades.wogue.server.domain.PlayerSession
 import org.badgrades.wogue.shared.model.Player
 import java.awt.Point
 import java.util.*

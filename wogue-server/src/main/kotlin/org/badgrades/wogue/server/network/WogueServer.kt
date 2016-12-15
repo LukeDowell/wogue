@@ -8,6 +8,7 @@ import org.badgrades.wogue.server.network.netty.RootChannelInitializer
 import org.badgrades.wogue.shared.util.LoggerDelegate
 import org.badgrades.wogue.shared.util.Network.Companion.TCP_PORT
 
+
 class WogueServer {
 
     val log by LoggerDelegate()
@@ -29,7 +30,9 @@ class WogueServer {
 
             // Bind and start to accept incoming connections
             val channelFuture = bootStrap.bind(TCP_PORT).sync()
-
+    
+            log.info("Server started successfully!")
+            
             // Wait until the server socket is closed
             channelFuture.channel().closeFuture().sync()
         } catch (e: Exception) {
@@ -39,6 +42,6 @@ class WogueServer {
             bossGroup.shutdownGracefully()
         }
 
-        log.info("Server started successfully!")
+        
     }
 }
