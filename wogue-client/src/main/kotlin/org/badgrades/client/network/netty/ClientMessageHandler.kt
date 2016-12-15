@@ -15,7 +15,7 @@ class ClientMessageHandler : ChannelInboundHandlerAdapter() {
         log.info("Channel READ! {}", message.payload)
         
         val response = Message(
-                Event.CHAT,
+                Event.CHAT_MESSAGE,
                 "Waddup fam"
         )
         ctx?.writeAndFlush(response)

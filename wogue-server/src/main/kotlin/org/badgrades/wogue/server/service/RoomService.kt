@@ -18,7 +18,7 @@ class RoomService {
         val broadcastChatRoom = DefaultRoom(
                 "BroadcastChatRoom",
                 listOf(
-                        Event.CHAT,
+                        Event.CHAT_MESSAGE,
                         Event.PLAYER_JOINED
                 )
         )

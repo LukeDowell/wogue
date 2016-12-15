@@ -4,9 +4,9 @@ import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
-import io.netty.handler.codec.serialization.ClassResolvers
-import io.netty.handler.codec.serialization.ObjectDecoder
-import io.netty.handler.codec.serialization.ObjectEncoder
+import io.netty.handler.codec.json.JsonObjectDecoder
+import org.badgrades.wogue.shared.network.netty.JacksonDecoder
+import org.badgrades.wogue.shared.network.netty.JacksonEncoder
 import org.badgrades.wogue.shared.util.LoggerDelegate
 import java.nio.charset.Charset
 
@@ -21,11 +21,14 @@ class RootChannelInitializer : ChannelInitializer<SocketChannel>() {
                 ch?.remoteAddress())
         
         ch?.pipeline()?.addLast(
-                
-                ObjectDecoder(ClassResolvers.cacheDisabled(null)),
-                ObjectEncoder(),
         
-                ClientMessageHandler()
+                // Inbound
+                JacksonDecoder(),
+                JsonObjectDecoder(),
+//                ClientMessageHandler(),
+//
+                // Outbound
+                JacksonEncoder()
         )
         
         log.info("Done initializing channel with id: {} and address: {} ",
