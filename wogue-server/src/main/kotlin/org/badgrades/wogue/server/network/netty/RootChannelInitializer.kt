@@ -1,6 +1,7 @@
 package org.badgrades.wogue.server.network.netty
 
 import com.google.inject.Inject
+import com.google.inject.Provider
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.json.JsonObjectDecoder
@@ -14,7 +15,7 @@ import org.badgrades.wogue.shared.util.LoggerDelegate
  * This is the root handler for all connections coming into our server
  */
 class RootChannelInitializer
-@Inject constructor(eventDispatcherAdapter: EventDispatcherAdapter): ChannelInitializer<SocketChannel>() {
+@Inject constructor(val loginAdapterProvider: LoginAdapterProvider): ChannelInitializer<SocketChannel>() {
     
     val log by LoggerDelegate()
     
@@ -28,7 +29,7 @@ class RootChannelInitializer
                 // Inbound
                 JsonObjectDecoder(),
                 JacksonDecoder(),
-                EventDispatcherAdapter(),
+                loginAdapterProvider.get(),
 
                 // Outbound
                 JacksonEncoder()

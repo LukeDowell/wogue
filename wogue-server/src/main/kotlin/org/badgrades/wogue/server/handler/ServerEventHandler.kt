@@ -4,7 +4,6 @@ import org.badgrades.wogue.server.network.event.EventObserver
 import org.badgrades.wogue.shared.network.Message
 
 /**
- * Controllers for various kinds of events
+ * Controllers for various kinds of events. Should these be singletons?
  */
-abstract class ServerEventHandler : EventObserver {
-}
+abstract class ServerEventHandler : EventObserver

@@ -12,38 +12,38 @@ class WogueClient {
 
     val log by LoggerDelegate()
     val workerGroup = NioEventLoopGroup()
-
-    companion object {
-        /**
-         * Time in milliseconds to try connecting to the server
-         */
-        const val CONNECTION_TIMEOUT = 5000
-    }
+    val bootstrap: Bootstrap
 
     init {
+        bootstrap = Bootstrap()
+        bootstrap.group(workerGroup)
+        bootstrap.channel(NioSocketChannel::class.java)
+        bootstrap.option(ChannelOption.SO_KEEPALIVE, true)
+        bootstrap.handler(RootChannelInitializer())
+    }
+
+    fun connect(address: String = Network.ADDRESS, port: Int = Network.TCP_PORT) {
         log.info("WogueClient starting up...")
 
         try {
-            val bootstrap = Bootstrap()
-            bootstrap.group(workerGroup)
-            bootstrap.channel(NioSocketChannel::class.java)
-            bootstrap.option(ChannelOption.SO_KEEPALIVE, true)
-            bootstrap.handler(RootChannelInitializer())
-            
             // We should call connect instead of bind, why?
             val channelFuture = bootstrap.connect(
-                    Network.ADDRESS,
-                    Network.TCP_PORT
+                    address,
+                    port
             ).sync()
-            
+
+            log.info("WogueClient started successfully!")
+
             // Wait until the connection is closed
             channelFuture.channel()
                     .closeFuture()
                     .sync()
+        } catch (e: Exception) {
+            log.error("Error performing client connection! Message: {}" , e.message)
         } finally {
             workerGroup.shutdownGracefully()
         }
-        
-        log.info("WogueClient started successfully!")
+
+
     }
 }

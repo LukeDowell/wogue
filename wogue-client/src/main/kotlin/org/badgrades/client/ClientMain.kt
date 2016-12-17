@@ -1,7 +1,12 @@
 package org.badgrades.client
 
-import org.badgrades.client.network.WogueClient
+import com.google.inject.Guice
 
-fun main(args: Array<String>) {
-    WogueClient()
+class ClientMain {
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            Guice.createInjector(ClientModule())
+        }
+    }
 }

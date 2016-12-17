@@ -10,5 +10,11 @@ enum class Event {
     CHAT_MESSAGE,
     
     PLAYER_MOVED,
-    PLAYER_JOINED;
+    PLAYER_JOINED,
+
+    LOGIN_REQUEST,
+    LOGIN_ACCEPTED,
+    LOGIN_DENIED,
+
+    ACTION_NOT_ALLOWED //
 }

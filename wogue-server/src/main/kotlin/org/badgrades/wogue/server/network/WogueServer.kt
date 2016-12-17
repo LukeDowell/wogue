@@ -1,5 +1,6 @@
 package org.badgrades.wogue.server.network
 
+import com.google.inject.Inject
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.ChannelOption
 import io.netty.channel.nio.NioEventLoopGroup
@@ -9,7 +10,8 @@ import org.badgrades.wogue.shared.util.LoggerDelegate
 import org.badgrades.wogue.shared.util.Network.Companion.TCP_PORT
 
 
-class WogueServer {
+class WogueServer
+@Inject constructor(rootChannelInitializer: RootChannelInitializer){
 
     val log by LoggerDelegate()
 
@@ -24,7 +26,7 @@ class WogueServer {
             bootStrap
                     .group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel::class.java)
-                    .childHandler(RootChannelInitializer())
+                    .childHandler(rootChannelInitializer)
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true)
 
