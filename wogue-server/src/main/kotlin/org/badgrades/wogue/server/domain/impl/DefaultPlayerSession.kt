@@ -15,5 +15,5 @@ class DefaultPlayerSession(override var channel: SocketChannel) : PlayerSession 
     
     override var state: PlayerSession.STATUS = PlayerSession.STATUS.OPEN
     
-    override val rooms: MutableCollection<UUID> = mutableListOf()
+    override val rooms: MutableSet<UUID> = mutableSetOf()
 }

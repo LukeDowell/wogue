@@ -1,7 +1,6 @@
 package org.badgrades.wogue.server.network.netty
 
 import com.google.inject.Inject
-import com.google.inject.Provider
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.json.JsonObjectDecoder
@@ -14,10 +13,14 @@ import org.badgrades.wogue.shared.util.LoggerDelegate
 /**
  * This is the root handler for all connections coming into our server
  */
-class RootChannelInitializer
-@Inject constructor(val loginAdapterProvider: LoginAdapterProvider): ChannelInitializer<SocketChannel>() {
+class RootChannelInitializer : ChannelInitializer<SocketChannel> {
     
     val log by LoggerDelegate()
+    val loginAdapterProvider: LoginAdapterProvider
+    
+    @Inject constructor(loginAdapterProvider: LoginAdapterProvider) {
+        this.loginAdapterProvider = loginAdapterProvider
+    }
     
     override fun initChannel(ch: SocketChannel?) {
         log.info("Initializing incoming connection with id: {} and address: {}",

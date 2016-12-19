@@ -27,7 +27,7 @@ interface PlayerSession {
     /**
      * A list of room IDs to which this player belongs
      */
-    val rooms: MutableCollection<UUID>
+    val rooms: MutableSet<UUID>
     
     /**
      *

@@ -9,8 +9,9 @@ import org.badgrades.wogue.shared.network.Message
 /**
  * Handles chat messages
  */
-class ChatHandler
-@Inject constructor(roomService: RoomService, playerService: PlayerService): ServerEventHandler() {
+class ChatHandler : ServerEventHandler {
+    
+    @Inject constructor(roomService: RoomService, playerService: PlayerService)
     
     override val eventsToListenFor: Collection<Event> = listOf(Event.CHAT_MESSAGE)
     

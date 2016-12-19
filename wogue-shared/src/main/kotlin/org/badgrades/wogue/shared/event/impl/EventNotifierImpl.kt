@@ -1,7 +1,7 @@
 package org.badgrades.wogue.shared.event.impl
 
-import org.badgrades.wogue.server.network.event.EventObserver
 import org.badgrades.wogue.shared.event.EventNotifier
+import org.badgrades.wogue.shared.event.EventObserver
 import org.badgrades.wogue.shared.network.Event
 import org.badgrades.wogue.shared.network.Message
 import org.badgrades.wogue.shared.util.LoggerDelegate

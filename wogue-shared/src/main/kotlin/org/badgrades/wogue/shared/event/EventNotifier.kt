@@ -1,6 +1,5 @@
 package org.badgrades.wogue.shared.event
 
-import org.badgrades.wogue.server.network.event.EventObserver
 import org.badgrades.wogue.shared.network.Event
 import org.badgrades.wogue.shared.network.Message
 import java.util.*

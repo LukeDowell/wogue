@@ -7,6 +7,6 @@ import java.util.*
 class DefaultRoom(override val name: String) : Room {
     
     override val id: UUID = UUID.randomUUID()
-    override val sessions: MutableCollection<PlayerSession> = mutableListOf()
+    override val sessions: MutableSet<PlayerSession> = mutableSetOf()
     
 }

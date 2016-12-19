@@ -22,7 +22,7 @@ interface Room {
     /**
      * A collection of all player sessions associated with this room
      */
-    val sessions: MutableCollection<PlayerSession>
+    val sessions: MutableSet<PlayerSession>
     
     /**
      * Convenient function for joining a room

@@ -16,11 +16,7 @@ constructor(val eventNotifier: EventNotifier) : ChannelInboundHandlerAdapter() {
     override fun channelRead(ctx: ChannelHandlerContext?, msg: Any?) {
         val message = msg as Message
         log.info("CHANNEL READ HIT! {}", message.payload)
-    }
-    
-    override fun channelActive(ctx: ChannelHandlerContext?) {
-        log.info("CHANNEL ACTIVE HIT")
-        super.channelActive(ctx)
+        eventNotifier.update(message)
     }
 }
 

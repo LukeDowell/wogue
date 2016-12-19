@@ -1,4 +1,4 @@
-package org.badgrades.wogue.server.network.event
+package org.badgrades.wogue.shared.event
 
 import org.badgrades.wogue.shared.network.Event
 import org.badgrades.wogue.shared.network.Message
