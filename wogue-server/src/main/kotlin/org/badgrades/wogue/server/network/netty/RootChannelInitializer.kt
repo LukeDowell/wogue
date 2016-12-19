@@ -13,14 +13,10 @@ import org.badgrades.wogue.shared.util.LoggerDelegate
 /**
  * This is the root handler for all connections coming into our server
  */
-class RootChannelInitializer : ChannelInitializer<SocketChannel> {
+class RootChannelInitializer
+@Inject constructor(val loginAdapterProvider: LoginAdapterProvider) : ChannelInitializer<SocketChannel>() {
     
     val log by LoggerDelegate()
-    val loginAdapterProvider: LoginAdapterProvider
-    
-    @Inject constructor(loginAdapterProvider: LoginAdapterProvider) {
-        this.loginAdapterProvider = loginAdapterProvider
-    }
     
     override fun initChannel(ch: SocketChannel?) {
         log.info("Initializing incoming connection with id: {} and address: {}",

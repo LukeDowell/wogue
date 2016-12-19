@@ -22,13 +22,13 @@ class RootChannelInitializer : ChannelInitializer<SocketChannel>() {
         
         ch?.pipeline()?.addLast(
         
+                // Outbound
+                JacksonEncoder(),
+                
                 // Inbound
                 JacksonDecoder(),
                 JsonObjectDecoder(),
-//                ClientMessageHandler(),
-//
-                // Outbound
-                JacksonEncoder()
+                ClientMessageHandler()
         )
         
         log.info("Done initializing channel with id: {} and address: {} ",

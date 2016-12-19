@@ -9,7 +9,7 @@ class HandlerInitializer {
     val log by LoggerDelegate()
     
     @Inject var eventNotifier: EventNotifier? = null
-    @Inject var serverEventHandlers: java.util.Set<ServerEventHandler>? = null // Necessary for Multibinder
+    @Inject var serverEventHandlers: java.util.Set<ServerEventHandler>? = null // java.util.Set necessary for Multibinder injection
     
     fun init() {
         serverEventHandlers?.forEach { handler ->

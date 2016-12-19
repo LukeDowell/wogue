@@ -6,10 +6,9 @@ import org.badgrades.wogue.server.service.RoomService
 import org.badgrades.wogue.shared.network.Event
 import org.badgrades.wogue.shared.network.Message
 
-class LoginHandler : ServerEventHandler {
+class LoginHandler
+@Inject constructor(roomService: RoomService, playerService: PlayerService) : ServerEventHandler() {
     
-    @Inject constructor(roomService: RoomService, playerService: PlayerService)
-
     override fun update(message: Message) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

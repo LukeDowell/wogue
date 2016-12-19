@@ -11,25 +11,27 @@ import org.badgrades.wogue.shared.util.Network.Companion.TCP_PORT
 
 
 class WogueServer
-@Inject constructor(val rootChannelInitializer: RootChannelInitializer) {
+@Inject constructor(rootChannelInitializer: RootChannelInitializer) {
 
     val log by LoggerDelegate()
-
     val bossGroup = NioEventLoopGroup()
     val workerGroup = NioEventLoopGroup()
+    val bootStrap: ServerBootstrap
+    
+    init {
+        bootStrap = ServerBootstrap()
+        bootStrap
+                .group(bossGroup, workerGroup)
+                .channel(NioServerSocketChannel::class.java)
+                .childHandler(rootChannelInitializer)
+                .option(ChannelOption.SO_BACKLOG, 128)
+                .childOption(ChannelOption.SO_KEEPALIVE, true)
+    }
     
     fun start() {
         log.info("Starting WogueServer on port={}", TCP_PORT)
     
         try {
-            val bootStrap = ServerBootstrap()
-            bootStrap
-                    .group(bossGroup, workerGroup)
-                    .channel(NioServerSocketChannel::class.java)
-                    .childHandler(rootChannelInitializer)
-                    .option(ChannelOption.SO_BACKLOG, 128)
-                    .childOption(ChannelOption.SO_KEEPALIVE, true)
-        
             // Bind and start to accept incoming connections
             val channelFuture = bootStrap.bind(TCP_PORT).sync()
         
