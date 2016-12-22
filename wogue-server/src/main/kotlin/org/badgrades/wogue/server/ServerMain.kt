@@ -1,6 +1,7 @@
 package org.badgrades.wogue.server
 
 import com.google.inject.Guice
+import org.badgrades.wogue.server.event.EventModule
 import org.badgrades.wogue.server.handler.HandlerInitializer
 import org.badgrades.wogue.server.handler.HandlerModule
 import org.badgrades.wogue.server.network.NetworkModule
@@ -15,6 +16,7 @@ class ServerMain {
             // Build object graph
             val injector = Guice.createInjector(
                     ServiceModule(),
+                    EventModule(),
                     HandlerModule(),
                     NetworkModule()
             )

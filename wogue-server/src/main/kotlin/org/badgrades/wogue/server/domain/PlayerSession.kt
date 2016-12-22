@@ -1,33 +1,40 @@
 package org.badgrades.wogue.server.domain
 
-import io.netty.channel.socket.SocketChannel
+import io.netty.channel.Channel
 import org.badgrades.wogue.shared.model.Player
 import java.util.*
 
 /**
  * Represents an open connection to the server
  */
-interface PlayerSession {
+abstract class PlayerSession {
+    
+    /**
+     * This looks kind of weird, seems like the best way to do private
+     * fields in a primary constructor
+     */
+    abstract val channel: Channel
     
     /**
      *
      */
-    var state: STATUS
+    abstract var state: STATUS
     
     /**
      *
      */
-    val channel: SocketChannel
-    
-    /**
-     *
-     */
-    val player: Player
+    abstract val player: Player
     
     /**
      * A list of room IDs to which this player belongs
      */
-    val rooms: MutableSet<UUID>
+    abstract val rooms: MutableSet<UUID> // Is a set of uuids redundant?
+    
+    /**
+     *
+     */
+    val id: String
+        get() = channel.id().asShortText()
     
     /**
      *

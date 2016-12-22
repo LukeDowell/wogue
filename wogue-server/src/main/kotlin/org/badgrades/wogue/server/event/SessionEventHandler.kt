@@ -1,13 +1,13 @@
-package org.badgrades.wogue.shared.event
+package org.badgrades.wogue.server.event
 
+import org.badgrades.wogue.server.domain.PlayerSession
 import org.badgrades.wogue.shared.network.Event
 import org.badgrades.wogue.shared.network.Message
 
 /**
- * Abstract class for objects that want to be notified of certain events
+ * Controllers for various kinds of events. Should these be singletons? Should this be in the handler package?
  */
-interface EventObserver {
-    
+interface SessionEventHandler {
     /**
      * A list of events that this observer cares about
      */
@@ -17,6 +17,5 @@ interface EventObserver {
      * The function called when a message is received that has an event contained in
      * eventsToListenFor
      */
-    fun update(message: Message)
-    
+    fun update(message: Message, playerSession: PlayerSession)
 }

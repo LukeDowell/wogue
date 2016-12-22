@@ -14,7 +14,7 @@ import org.badgrades.wogue.shared.util.LoggerDelegate
  * This is the root handler for all connections coming into our server
  */
 class RootChannelInitializer
-@Inject constructor(val loginAdapterProvider: LoginAdapterProvider) : ChannelInitializer<SocketChannel>() {
+@Inject constructor(val sessionAdapter: SessionAdapter) : ChannelInitializer<SocketChannel>() {
     
     val log by LoggerDelegate()
     
@@ -28,7 +28,7 @@ class RootChannelInitializer
                 // Inbound
                 JsonObjectDecoder(),
                 JacksonDecoder(),
-                loginAdapterProvider.get(),
+                sessionAdapter, // Is it weird that this singleton belongs to every channel?
 
                 // Outbound
                 JacksonEncoder()
