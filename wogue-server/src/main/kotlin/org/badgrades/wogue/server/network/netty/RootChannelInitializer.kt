@@ -4,8 +4,6 @@ import com.google.inject.Inject
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.json.JsonObjectDecoder
-import org.badgrades.wogue.shared.network.Event
-import org.badgrades.wogue.shared.network.Message
 import org.badgrades.wogue.shared.network.netty.JacksonDecoder
 import org.badgrades.wogue.shared.network.netty.JacksonEncoder
 import org.badgrades.wogue.shared.util.LoggerDelegate
@@ -25,23 +23,17 @@ class RootChannelInitializer
         
         ch?.pipeline()?.addLast(
         
+                // Outbound
+                JacksonEncoder(),
+                
                 // Inbound
                 JsonObjectDecoder(),
                 JacksonDecoder(),
-                sessionAdapter, // Is it weird that this singleton belongs to every channel?
-
-                // Outbound
-                JacksonEncoder()
+                sessionAdapter
         )
         
         log.info("Channel with id: {} and address: {} initialized!",
                 ch?.id(),
                 ch?.remoteAddress())
-    
-        val message = Message(
-                Event.CHAT_MESSAGE,
-                "Hey dog"
-        )
-        ch?.writeAndFlush(message)
     }
 }

@@ -5,6 +5,7 @@ import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.json.JsonObjectDecoder
+import org.badgrades.client.network.ClientService
 import org.badgrades.wogue.shared.network.netty.JacksonDecoder
 import org.badgrades.wogue.shared.network.netty.JacksonEncoder
 import org.badgrades.wogue.shared.util.LoggerDelegate
@@ -26,15 +27,18 @@ class RootChannelInitializer : ChannelInitializer<SocketChannel>() {
                 JacksonEncoder(),
                 
                 // Inbound
-                JacksonDecoder(),
                 JsonObjectDecoder(),
+                JacksonDecoder(),
                 ClientMessageHandler()
         )
         
         log.info("Done initializing channel with id: {} and address: {} ",
                 ch?.id(),
                 ch?.remoteAddress())
+        
+        ClientService.channel = ch
     }
+    
     
     override fun channelActive(ctx: ChannelHandlerContext?) {
         val byteBuffer = Unpooled.copiedBuffer("Hello!", Charset.forName("UTF-8"))

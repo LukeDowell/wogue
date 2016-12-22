@@ -5,6 +5,8 @@ import io.netty.channel.ChannelOption
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioSocketChannel
 import org.badgrades.client.network.netty.RootChannelInitializer
+import org.badgrades.wogue.shared.network.Event
+import org.badgrades.wogue.shared.network.Message
 import org.badgrades.wogue.shared.util.LoggerDelegate
 import org.badgrades.wogue.shared.util.Network
 
@@ -31,8 +33,16 @@ class WogueClient {
                     address,
                     port
             ).sync()
-
+            
             log.info("WogueClient started successfully!")
+            
+            log.info("Requesting session...")
+            ClientService.channel?.writeAndFlush(
+                    Message(
+                            Event.ALL,
+                            "Give me a session ;_;"
+                    )
+            )
 
             // Wait until the connection is closed
             channelFuture.channel()
@@ -43,7 +53,5 @@ class WogueClient {
         } finally {
             workerGroup.shutdownGracefully()
         }
-
-
     }
 }
