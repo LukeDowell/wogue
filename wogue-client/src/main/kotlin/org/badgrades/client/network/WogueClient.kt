@@ -1,5 +1,6 @@
 package org.badgrades.client.network
 
+import com.google.inject.Inject
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel.ChannelOption
 import io.netty.channel.nio.NioEventLoopGroup
@@ -8,7 +9,8 @@ import org.badgrades.client.network.netty.RootChannelInitializer
 import org.badgrades.wogue.shared.util.LoggerDelegate
 import org.badgrades.wogue.shared.util.Network
 
-class WogueClient(
+class WogueClient
+@Inject constructor(
         rootChannelInitializer: RootChannelInitializer
 ) {
 

@@ -11,32 +11,34 @@ import javafx.scene.control.TextField
 import javafx.scene.layout.GridPane
 import javafx.scene.paint.Color
 import javafx.stage.Stage
+import org.badgrades.wogue.shared.util.LoggerDelegate
 
-class ClientFrame
-@Inject constructor(
-        val inputHandler: InputHandler,
-        val gameRenderer: GameRenderer
-): Application() {
-    
+class ClientFrame : Application() {
+
+    val log by LoggerDelegate()
     val canvas = Canvas()
     val submitButton = Button()
     val chatField = TextField()
     val inputField = TextField()
-    
+    @Inject val gameRenderer: GameRenderer? = null
+    @Inject val inputHandler: InputHandler? = null
+
     companion object {
         const val WIDTH = 500.0
         const val HEIGHT = 900.0
     }
 
     fun initialize() {
+        log.info("Initializing ClientFrame")
         launch(ClientFrame::class.java)
     }
     
     override fun start(primaryStage: Stage) {
+        log.info("ClientFrame setup starting...")
         canvas.width = 400.0
         canvas.height = 400.0
-        canvas.graphicsContext2D?.fill = Color.BLACK
-        canvas.graphicsContext2D?.fillRect(
+        canvas.graphicsContext2D.fill = Color.BLACK
+        canvas.graphicsContext2D.fillRect(
                 0.0,
                 0.0,
                 canvas.width,
@@ -71,10 +73,11 @@ class ClientFrame
         setupEventHandlers()
         setupRenderer()
         primaryStage.show()
+        log.info("ClientFrame setup complete")
     }
     
     fun setupEventHandlers() {
-        inputField.onKeyReleased = inputHandler.handleInputChat(inputField.text)
+        inputField.onKeyReleased = inputHandler?.handleInputChat(inputField.text)
     }
     
     fun setupRenderer() {

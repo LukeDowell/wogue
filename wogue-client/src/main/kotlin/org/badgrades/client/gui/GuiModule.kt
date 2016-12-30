@@ -8,7 +8,6 @@ import com.google.inject.AbstractModule
 class GuiModule : AbstractModule() {
     override fun configure() {
         bind(GameRenderer::class.java).asEagerSingleton()
-        bind(ClientFrame::class.java).asEagerSingleton()
         bind(InputHandler::class.java).asEagerSingleton()
     }
 }

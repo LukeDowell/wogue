@@ -1,6 +1,7 @@
 package org.badgrades.client
 
 import com.google.inject.Guice
+import com.sun.deploy.util.SessionState
 import org.badgrades.client.game.GameModule
 import org.badgrades.client.gui.ClientFrame
 import org.badgrades.client.gui.GuiModule
@@ -23,8 +24,9 @@ class ClientMain {
             val server = injector.getInstance(WogueClient::class.java)
             server.connect()
 
-            val gui = injector.getInstance(ClientFrame::class.java)
-            gui.initialize()
+            val clientFrame = ClientFrame()
+            injector.injectMembers(clientFrame)
+            clientFrame.initialize()
         }
     }
 }
