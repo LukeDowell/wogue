@@ -2,7 +2,6 @@ package org.badgrades.client.network.netty
 
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
-import org.badgrades.client.game.player
 import org.badgrades.wogue.shared.model.ChatMessage
 import org.badgrades.wogue.shared.model.Player
 import org.badgrades.wogue.shared.network.Event
@@ -19,7 +18,7 @@ class ClientMessageHandler : ChannelInboundHandlerAdapter() {
         when(message.event) {
             
             Event.LOGIN_ACCEPTED -> {
-                player = message.payload as Player
+                val player = message.payload as Player
                 log.info("Player Set! $player")
             }
             

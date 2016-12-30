@@ -2,5 +2,9 @@ package org.badgrades.client.game
 
 import org.badgrades.wogue.shared.model.Player
 
-var player: Player? = null
-var otherPlayers: MutableCollection<Player> = mutableListOf()
+/**
+ * Contains data about the local state of the game
+ */
+class Game(
+        val player: Player
+)
