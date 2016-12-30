@@ -26,16 +26,13 @@ class ClientFrame
     companion object {
         const val WIDTH = 500.0
         const val HEIGHT = 900.0
-        
-        @JvmStatic
-        fun main(args: Array<String>) {
-            launch(ClientFrame::class.java)
-        }
+    }
+
+    fun initialize() {
+        launch(ClientFrame::class.java)
     }
     
-    override fun start(primaryStage: Stage?) {
-        val stage = primaryStage as Stage
-        
+    override fun start(primaryStage: Stage) {
         canvas.width = 400.0
         canvas.height = 400.0
         canvas.graphicsContext2D?.fill = Color.BLACK
@@ -68,16 +65,16 @@ class ClientFrame
     
         val scene = Scene(grid)
         
-        stage.title = "Client :^)"
-        stage.scene = scene
+        primaryStage.title = "Client :^)"
+        primaryStage.scene = scene
         
         setupEventHandlers()
         setupRenderer()
-        stage.show()
+        primaryStage.show()
     }
     
     fun setupEventHandlers() {
-        inputField.onKeyReleased = inputHandler.inputChatEventHandler
+        inputField.onKeyReleased = inputHandler.handleInputChat(inputField.text)
     }
     
     fun setupRenderer() {

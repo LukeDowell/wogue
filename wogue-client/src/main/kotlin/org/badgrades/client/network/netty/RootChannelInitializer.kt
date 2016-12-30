@@ -19,33 +19,32 @@ class RootChannelInitializer
     
     val log by LoggerDelegate()
     
-    override fun initChannel(ch: SocketChannel?) {
-        
+    override fun initChannel(ch: SocketChannel) {
         log.info("Initializing channel with id: {} and address: {} ",
-                ch?.id(),
-                ch?.remoteAddress())
-        
-        ch?.pipeline()?.addLast(
-        
+                ch.id(),
+                ch.remoteAddress())
+
+        ch.pipeline().addLast(
+
                 // Outbound
                 JacksonEncoder(),
-                
+
                 // Inbound
                 JsonObjectDecoder(),
                 JacksonDecoder(),
                 ClientMessageHandler()
         )
-        
+
         networkService.init(ch)
-        
+
         log.info("Done initializing channel with id: {} and address: {} ",
-                ch?.id(),
-                ch?.remoteAddress())
+                ch.id(),
+                ch.remoteAddress())
     }
     
     
-    override fun channelActive(ctx: ChannelHandlerContext?) {
+    override fun channelActive(ctx: ChannelHandlerContext) {
         val byteBuffer = Unpooled.copiedBuffer("Hello!", Charset.forName("UTF-8"))
-        ctx?.writeAndFlush(byteBuffer)?.addListener { log.info("ByteBuffer sent: {}", byteBuffer) }
+        ctx.writeAndFlush(byteBuffer).addListener { log.info("ByteBuffer sent: {}", byteBuffer) }
     }
 }

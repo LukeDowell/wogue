@@ -24,8 +24,8 @@ import java.util.*
     
     val log by LoggerDelegate()
     
-    override fun channelRead(ctx: ChannelHandlerContext?, msg: Any?) {
-        val channel = ctx?.channel() as Channel
+    override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
+        val channel = ctx.channel()
         val player = Player(
                 channel.id().asShortText() ?: "DefaultPlayer",
                 Point(

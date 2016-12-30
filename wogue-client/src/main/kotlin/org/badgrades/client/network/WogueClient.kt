@@ -8,7 +8,9 @@ import org.badgrades.client.network.netty.RootChannelInitializer
 import org.badgrades.wogue.shared.util.LoggerDelegate
 import org.badgrades.wogue.shared.util.Network
 
-class WogueClient {
+class WogueClient(
+        rootChannelInitializer: RootChannelInitializer
+) {
 
     val log by LoggerDelegate()
     val workerGroup = NioEventLoopGroup()
@@ -19,7 +21,7 @@ class WogueClient {
         bootstrap.group(workerGroup)
         bootstrap.channel(NioSocketChannel::class.java)
         bootstrap.option(ChannelOption.SO_KEEPALIVE, true)
-        bootstrap.handler(RootChannelInitializer())
+        bootstrap.handler(rootChannelInitializer)
     }
 
     fun connect(address: String = Network.ADDRESS, port: Int = Network.TCP_PORT) {

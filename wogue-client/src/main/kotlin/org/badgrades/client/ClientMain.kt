@@ -1,6 +1,10 @@
 package org.badgrades.client
 
 import com.google.inject.Guice
+import org.badgrades.client.game.GameModule
+import org.badgrades.client.gui.ClientFrame
+import org.badgrades.client.gui.GuiModule
+import org.badgrades.client.network.NetworkModule
 import org.badgrades.client.network.WogueClient
 
 class ClientMain {
@@ -9,11 +13,18 @@ class ClientMain {
         fun main(args: Array<String>) {
             
             // Build object graph
-            val injector = Guice.createInjector(ClientModule())
+            val injector = Guice.createInjector(
+                    GameModule(),
+                    GuiModule(),
+                    NetworkModule()
+            )
             
             // Start the server
             val server = injector.getInstance(WogueClient::class.java)
             server.connect()
+
+            val gui = injector.getInstance(ClientFrame::class.java)
+            gui.initialize()
         }
     }
 }

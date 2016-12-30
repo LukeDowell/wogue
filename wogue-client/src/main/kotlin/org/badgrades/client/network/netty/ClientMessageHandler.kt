@@ -12,7 +12,7 @@ class ClientMessageHandler : ChannelInboundHandlerAdapter() {
     
     val log by LoggerDelegate()
     
-    override fun channelRead(ctx: ChannelHandlerContext?, msg: Any?) {
+    override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
         val message = msg as Message
         
         when(message.event) {

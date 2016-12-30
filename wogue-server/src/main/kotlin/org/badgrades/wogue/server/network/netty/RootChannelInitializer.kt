@@ -16,12 +16,12 @@ class RootChannelInitializer
     
     val log by LoggerDelegate()
     
-    override fun initChannel(ch: SocketChannel?) {
+    override fun initChannel(ch: SocketChannel) {
         log.info("Initializing incoming connection with id: {} and address: {}",
-                ch?.id(),
-                ch?.remoteAddress())
+                ch.id(),
+                ch.remoteAddress())
         
-        ch?.pipeline()?.addLast(
+        ch.pipeline().addLast(
         
                 // Outbound
                 JacksonEncoder(),
@@ -33,7 +33,7 @@ class RootChannelInitializer
         )
         
         log.info("Channel with id: {} and address: {} initialized!",
-                ch?.id(),
-                ch?.remoteAddress())
+                ch.id(),
+                ch.remoteAddress())
     }
 }
